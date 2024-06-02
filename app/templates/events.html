@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+    <h1>Events</h1>
+    <ul>
+        {% for event in events %}
+        <li><a href="{{ url_for('main.event', event_id=event.id) }}">{{ event.title }}</a> ({{ event.start }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

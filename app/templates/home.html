@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .button {
+            margin: 0 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        #calendar {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Welcome to BoardOnlineDocs</h1>
+</div>
+
+<div class="buttons-container">
+    <button class="button" onclick="window.location.href='/events'">Events</button>
+    <button class="button" onclick="window.location.href='/meetings'">Meetings</button>
+    <button class="button" onclick="window.location.href='/tasks'">Tasks</button>
+</div>
+
+<div class="calendar-container">
+    <div id="calendar"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            events: '/events',
+            dayClick: function(date, jsEvent, view) {
+                var tooltip = $('<div class="tooltip">Create: <a href="/event/new/' + date.format() + '">Event</a> | <a href="/meeting/new/' + date.format() + '">Meeting</a> | <a href="/task/new/' + date.format() + '">Task</a></div>');
+                tooltip.css({
+                    position: 'absolute',
+                    top: jsEvent.pageY,
+                    left: jsEvent.pageX,
+                    background: '#f9f9f9',
+                    border: '1px solid #ccc',
+                    padding: '10px'
+                }).appendTo('body').fadeIn('slow');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
