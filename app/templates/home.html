@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<header>
+    <h1>BoardDocs</h1>
+</header>
+<div class="content">
+    <h2>Home Page</h2>
+    <div class="calendar">
+        <h3>Select a Date</h3>
+        <input type="date" id="datePicker">
+        <button onclick="openEventsPage()">Go to Events</button>
+    </div>
+</div>
+{% endblock %}
+
+<script>
+    function openEventsPage() {
+        const date = document.getElementById('datePicker').value;
+        if (date) {
+            window.location.href = `/events?date=${date}`;
+        } else {
+            alert('Please select a date');
+        }
+    }
+</script>

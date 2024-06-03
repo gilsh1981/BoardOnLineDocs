@@ -1,0 +1,37 @@
+/* static/styles.css */
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.login-header .logo {
+    width: 150px;
+}
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+button {
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkorange;
+}
