@@ -1,0 +1,35 @@
+2024-06-27 08:43:15,864 ERROR: Exception on / [GET] [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\main.py", line 8, in index
+    if not current_user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+2024-06-27 08:56:47,858 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:55]
+2024-06-27 08:56:48,565 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:55]
+2024-06-27 09:16:11,696 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:58]
+2024-06-27 09:16:12,495 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:58]

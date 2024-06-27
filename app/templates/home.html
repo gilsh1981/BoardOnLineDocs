@@ -2,12 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <style>
         body {
             background-color: white;
@@ -15,72 +11,115 @@
             font-family: Arial, sans-serif;
         }
         .header {
-            background-color: #333;
-            color: white;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: orange;
+            padding: 10px;
+        }
+        .header .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header .logo {
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+        }
+        .calendar {
+            width: 70%;
+        }
+        .events {
+            width: 30%;
             padding: 20px;
+            background-color: #f0f0f0;
         }
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
+        .events h3 {
+            margin-top: 0;
         }
-        .button {
-            margin: 0 15px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        .event {
+            margin-bottom: 10px;
         }
-        .calendar-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px;
-        }
-        #calendar {
-            width: 80%;
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: orange;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
 </head>
 <body>
+    <div class="header">
+        <div class="title">BOD</div>
+        <div class="logo">BoardOnlineDocs</div>
+    </div>
+    <div class="container">
+        <div class="calendar" id="calendar"></div>
+        <div class="events">
+            <h3>Upcoming Events</h3>
+            {% for event in events %}
+            <div class="event">{{ event.title }} - {{ event.date }}</div>
+            {% endfor %}
+            <button id="addEventBtn">+</button>
+        </div>
+    </div>
+    <div class="footer">All rights reserved to BOD</div>
 
-<div class="header">
-    <h1>Welcome to BoardOnlineDocs</h1>
-</div>
+    <div id="eventModal" style="display: none;">
+        <h2>Create Event</h2>
+        <form id="eventForm">
+            <label for="eventType">Event Type</label>
+            <select id="eventType">
+                <option value="Board Meeting">Board Meeting</option>
+                <option value="Company Event">Company Event</option>
+                <option value="Urgent Discussion">Urgent Discussion</option>
+            </select>
+            <br>
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle">
+            <br>
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate">
+            <br>
+            <button type="submit">Create Event</button>
+        </form>
+    </div>
 
-<div class="buttons-container">
-    <button class="button" onclick="window.location.href='/events'">Events</button>
-    <button class="button" onclick="window.location.href='/meetings'">Meetings</button>
-    <button class="button" onclick="window.location.href='/tasks'">Tasks</button>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                events: "/load_events",
+                dayClick: function(date) {
+                    $('#eventDate').val(date.format());
+                    $('#eventModal').show();
+                }
+            });
 
-<div class="calendar-container">
-    <div id="calendar"></div>
-</div>
+            $('#addEventBtn').click(function() {
+                $('#eventModal').show();
+            });
 
-<script>
-    $(document).ready(function() {
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            events: '/events',
-            dayClick: function(date, jsEvent, view) {
-                var tooltip = $('<div class="tooltip">Create: <a href="/event/new/' + date.format() + '">Event</a> | <a href="/meeting/new/' + date.format() + '">Meeting</a> | <a href="/task/new/' + date.format() + '">Task</a></div>');
-                tooltip.css({
-                    position: 'absolute',
-                    top: jsEvent.pageY,
-                    left: jsEvent.pageX,
-                    background: '#f9f9f9',
-                    border: '1px solid #ccc',
-                    padding: '10px'
-                }).appendTo('body').fadeIn('slow');
-            }
+            $('#eventForm').submit(function(event) {
+                event.preventDefault();
+                var eventData = {
+                    title: $('#eventTitle').val(),
+                    start: $('#eventDate').val(),
+                    type: $('#eventType').val()
+                };
+                $.post('/create_event', eventData, function() {
+                    $('#calendar').fullCalendar('refetchEvents');
+                    $('#eventModal').hide();
+                });
+            });
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>

@@ -1,0 +1,100 @@
+2024-06-20 10:40:33,563 ERROR: Exception on / [GET] [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\main.py", line 8, in home
+    return render_template('home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\templating.py", line 127, in _render
+    app.update_template_context(context)
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 493, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 405, in _user_context_processor
+    return dict(current_user=_get_user())
+                             ^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+2024-06-20 11:56:15,430 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:57]
+2024-06-20 11:56:17,213 ERROR: Exception on / [GET] [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\main.py", line 8, in home
+    return render_template('home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\templating.py", line 127, in _render
+    app.update_template_context(context)
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 493, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 405, in _user_context_processor
+    return dict(current_user=_get_user())
+                             ^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+2024-06-20 12:06:35,910 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:55]
+2024-06-20 12:06:37,178 ERROR: Exception on / [GET] [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py:838]
+Traceback (most recent call last):
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\main.py", line 8, in index
+    if not current_user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\.venv\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+2024-06-27 08:42:45,659 INFO: App startup [in C:\Users\gils\PycharmProjects\BoarOnlineDocs\BoardOnlineDocs\app\__init__.py:55]

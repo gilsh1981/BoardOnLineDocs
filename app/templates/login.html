@@ -2,31 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: orange;
+            flex-direction: column;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header .title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .header .subtitle {
+            font-size: 18px;
+        }
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #555;
+            border: 1px solid #777;
+            border-radius: 3px;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: orange;
+            border: none;
+            color: black;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 100%;
+        }
+        a {
+            color: orange;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+    </style>
 </head>
-<body style="background-color: black; color: white;">
-
-<div class="header">
-    <h1 style="text-align: center; color: white; font-family: 'Arial', sans-serif;">BoardOnlineDocs</h1>
-</div>
-
-<div class="login-container" style="display: flex; justify-content: center; align-items: center; height: 80vh;">
-    <form method="POST" action="{{ url_for('auth.login') }}">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-        </div>
-        <div class="form-group">
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-        </div>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
-</div>
-
+<body>
+    <div class="header">
+        <div class="title">BoardOnlineDocs</div>
+        <div class="subtitle">Secure Your Docs</div>
+    </div>
+    <div class="login-container">
+        <h2 style="color: orange;">Login</h2>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.reset_request') }}">Forgot password?</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
